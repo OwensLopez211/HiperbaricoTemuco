@@ -1,21 +1,12 @@
 
-import { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleNavigation = (path: string) => {
     setIsMenuOpen(false);
@@ -25,47 +16,14 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`fixed w-full transition-all duration-300 z-40 top-0 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
-    }`}>
-      <div className="container mx-auto flex flex-col items-center py-2 sm:py-4 px-4 sm:px-6">
-        <Link to="/" className="flex items-center mb-2 sm:mb-4">
-          <img 
-            src="/logo.png" 
-            alt="Logo" 
-            className="h-20 sm:h-32 lg:h-40 w-auto"
-          />
-        </Link>
+    <nav className="fixed w-full bottom-0 bg-transparent z-40">
+      <div className="container mx-auto flex justify-center items-center py-3 px-4 sm:px-6">
 
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`lg:hidden p-2 rounded-lg transition-colors absolute top-2 sm:top-4 right-4 sm:right-6 ${
-            isScrolled ? 'hover:bg-gray-100 text-gray-800' : 'hover:bg-white/20 text-white'
-          }`}
-          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          <motion.svg 
-            className="w-6 h-6" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-            animate={{ rotate: isMenuOpen ? 180 : 0 }}
-          >
-            {isMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </motion.svg>
-        </button>
-
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="flex items-center gap-4 sm:gap-6 lg:gap-8">
           <NavLink 
             to="/" 
             className={({isActive}) => `transition-colors font-medium text-sm relative group ${
-              isScrolled 
-                ? (isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800')
-                : (isActive ? 'text-white' : 'text-gray-200 hover:text-white')
+              isActive ? 'text-white' : 'text-gray-200 hover:text-white'
             }`}
           >
             {({isActive}) => (
@@ -80,9 +38,7 @@ const Navbar = () => {
           <NavLink 
             to="/tratamientos" 
             className={({isActive}) => `transition-colors font-medium text-sm relative group ${
-              isScrolled 
-                ? (isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800')
-                : (isActive ? 'text-white' : 'text-gray-200 hover:text-white')
+              isActive ? 'text-white' : 'text-gray-200 hover:text-white'
             }`}
           >
             {({isActive}) => (
@@ -97,9 +53,7 @@ const Navbar = () => {
           <NavLink 
             to="/nosotros" 
             className={({isActive}) => `transition-colors font-medium text-sm relative group ${
-              isScrolled 
-                ? (isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800')
-                : (isActive ? 'text-white' : 'text-gray-200 hover:text-white')
+              isActive ? 'text-white' : 'text-gray-200 hover:text-white'
             }`}
           >
             {({isActive}) => (
@@ -114,9 +68,7 @@ const Navbar = () => {
           <NavLink 
             to="/contacto" 
             className={({isActive}) => `transition-colors font-medium text-sm relative group ${
-              isScrolled 
-                ? (isActive ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800')
-                : (isActive ? 'text-white' : 'text-gray-200 hover:text-white')
+              isActive ? 'text-white' : 'text-gray-200 hover:text-white'
             }`}
           >
             {({isActive}) => (
@@ -137,7 +89,7 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden fixed top-[120px] left-0 right-0 border-t border-gray-200"
+              className="lg:hidden fixed top-[80px] left-0 right-0 border-t border-gray-200"
             >
               <div className="px-4 py-4 space-y-4 bg-white/95 backdrop-blur-sm shadow-lg">
                 <a 

@@ -1,19 +1,19 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from './public-components/Navbar';
-import Footer from './public-components/Footer';
+import HeaderPage from './public-components/HeaderPage';
 import ScrollToTop from './public-components/ScrollToTop';
 import TransitionOverlay from './public-components/TransitionOverlay';
+import Navbar from './public-components/Navbar';
 
 const Layout = () => {
   return (
     <div className="flex flex-col h-screen overflow-hidden" style={{ backgroundColor: '#8FD694' }}>
       <ScrollToTop />
       <TransitionOverlay />
-      <Navbar />
+      <HeaderPage />
       <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>
-      <Footer />
+      <Navbar />
     </div>
   );
 };
