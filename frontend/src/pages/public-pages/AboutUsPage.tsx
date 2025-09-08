@@ -7,7 +7,7 @@ const AboutUsPage = () => {
     <PageTransition>
       <Navbar />
       <section 
-        className="relative h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage: 'url("/hero.jpg")',
           backgroundSize: 'cover',
@@ -46,14 +46,14 @@ const AboutUsPage = () => {
             </div>
 
             {/* Content Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 px-2 sm:px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6">
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="group"
               >
-                <div className="bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col hover:bg-white/25 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20">
+                <div className="bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 h-56 sm:h-60 md:h-64 flex flex-col justify-between hover:bg-white/25 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20">
                   <div className="text-center">
                     <div className="bg-gradient-to-br from-blue-400 to-blue-600 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@ const AboutUsPage = () => {
                 transition={{ duration: 0.8, delay: 0.8 }}
                 className="group"
               >
-                <div className="bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col hover:bg-white/25 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20">
+                <div className="bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 h-56 sm:h-60 md:h-64 flex flex-col justify-between hover:bg-white/25 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20">
                   <div className="text-center">
                     <div className="bg-gradient-to-br from-green-400 to-green-600 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@ const AboutUsPage = () => {
                 transition={{ duration: 0.8, delay: 1.0 }}
                 className="group"
               >
-                <div className="bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col hover:bg-white/25 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20">
+                <div className="bg-white/15 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 h-56 sm:h-60 md:h-64 flex flex-col justify-between hover:bg-white/25 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl border border-white/20">
                   <div className="text-center">
                     <div className="bg-gradient-to-br from-purple-400 to-purple-600 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
