@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
  * @returns Objeto con la imagen actual, la imagen anterior y el estado de transición
  */
 export const useBackgroundCarousel = (
-  images: string[] = ['/hero.jpg', '/hero2.jpg', '/hero3.jpg', '/hero4.jpg', '/hero5.jpg'],
+  images: string[] = ['/hero.jpg', '/hero2.jpg', '/hero3.jpg'],
   interval: number = 5000,
   transitionDuration: number = 1000
 ) => {
