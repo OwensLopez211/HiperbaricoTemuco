@@ -1,135 +1,246 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CubeIcon, HeartIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import {
+  BeakerIcon,
+  HeartIcon,
+  ShieldCheckIcon
+} from '@heroicons/react/24/outline';
+import { useState, useEffect } from 'react';
+import { useBackgroundCarousel } from '../../hooks/useBackgroundCarousel';
 
-const Hero = () => {
+/**
+ * Hero Component for Hyperbaric Oxygen Therapy Center
+ *
+ * Features:
+ * - Video background support with image fallback
+ * - Professional medical/wellness design
+ * - Client-specific slogans and CTAs
+ * - Fully responsive mobile-first design
+ * - Optimized animations and accessibility
+ */
+
+interface HeroProps {
+  videoSrc?: string; // Optional: Path to background video
+  enableVideo?: boolean; // Toggle video background
+}
+
+const Hero: React.FC<HeroProps> = ({
+  videoSrc,
+  enableVideo = false
+}) => {
   const navigate = useNavigate();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const { currentImage, opacity } = useBackgroundCarousel();
 
-  const handleConsultationClick = () => {
+  // Handle video loading state
+  useEffect(() => {
+    if (enableVideo && videoSrc) {
+      const video = document.createElement('video');
+      video.src = videoSrc;
+      video.onloadeddata = () => {
+        setIsVideoLoaded(true);
+        setShowVideo(true);
+      };
+    }
+  }, [enableVideo, videoSrc]);
+
+  // Navigation handlers
+  const handleBookingClick = () => {
     navigate('/contacto');
   };
 
+  const handleBenefitsClick = () => {
+    navigate('/tratamientos');
+  };
+
   return (
-    <section 
+    <section
       className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: 'url("/hero.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-      aria-label="Sección principal"
+      aria-label="Hero section - Oxigenoterapia hiperbárica"
     >
-      <div className="absolute inset-0 bg-black/50"></div>
-      <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Content Column */}
-            <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
+      {/* Background Video (when enabled) */}
+      {enableVideo && showVideo && isVideoLoaded && videoSrc && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-hidden="true"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      )}
+
+      {/* Background Image (fallback or default) */}
+      {(!enableVideo || !showVideo) && (
+        <div
+          className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+          style={{
+            backgroundImage: `url("${currentImage}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: opacity
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Professional gradient overlay for better readability */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-green-900/40"
+        aria-hidden="true"
+      />
+
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+            {/* Main Content Column */}
+            <div className="lg:col-span-7 space-y-6 lg:space-y-8 text-center lg:text-left">
+
+              {/* Hero Headline - Client's Primary Slogan */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 lg:mb-6">
-                  Recupera tu Bienestar
-                </h2>
-                <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed mb-6 lg:mb-8">
-                  Tecnología avanzada para tu bienestar. Tratamientos hiperbáricos y estéticos de vanguardia en el corazón de La Araucanía
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 lg:mb-6">
+                  Respira salud.{' '}
+                  <span className="text-green-400">
+                    Renueva tu cuerpo
+                  </span>
+                  {' '}con oxigenoterapia hiperbárica.
+                </h1>
+
+                {/* Hero Subheadline - Client's Secondary Slogan */}
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed max-w-3xl mx-auto lg:mx-0">
+                  Mejora tu energía, acelera tu recuperación y potencia tu bienestar de forma natural.
                 </p>
               </motion.div>
 
+              {/* Call-to-Action Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <motion.button 
-                  onClick={handleConsultationClick}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-gray-100 transition-all text-base sm:text-lg font-medium shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-                  aria-label="Reservar cita médica"
+                {/* Primary CTA - Agenda tu sesión */}
+                <motion.button
+                  onClick={handleBookingClick}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg transition-all duration-300 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/50 focus:ring-offset-2 focus:ring-offset-transparent"
+                  aria-label="Agenda tu sesión de oxigenoterapia"
                 >
-                  Reservar Cita Médica
+                  Agenda tu sesión
                 </motion.button>
-                
-                <motion.button 
-                  onClick={() => navigate('/tratamientos')}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-white hover:text-gray-800 transition-all text-base sm:text-lg font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-                  aria-label="Ver tratamientos disponibles"
+
+                {/* Secondary CTA - Conoce los beneficios */}
+                <motion.button
+                  onClick={handleBenefitsClick}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-base sm:text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent"
+                  aria-label="Conoce los beneficios de la oxigenoterapia"
                 >
-                  Ver Tratamientos
+                  Conoce los beneficios
                 </motion.button>
               </motion.div>
 
-              {/* Features */}
+              {/* Features Grid - Oxigenoterapia themed */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                 className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mt-8 lg:mt-12"
               >
-                <div className="flex items-center space-x-3 justify-center lg:justify-start">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CubeIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                {/* Feature 1: Oxigenoterapia Avanzada */}
+                <div className="flex items-center space-x-3 justify-center lg:justify-start backdrop-blur-sm bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-green-400/30">
+                    <BeakerIcon className="w-6 h-6 text-green-400" aria-hidden="true" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-white font-semibold text-sm sm:text-base">Tecnología Moderna</h3>
-                    <p className="text-gray-300 text-xs sm:text-sm">Equipos especializados</p>
+                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                      Oxigenoterapia Avanzada
+                    </h3>
+                    <p className="text-gray-300 text-xs sm:text-sm">
+                      Tecnología de punta
+                    </p>
                   </div>
                 </div>
-                
-                <div className="flex items-center space-x-3 justify-center lg:justify-start">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <HeartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+
+                {/* Feature 2: Recuperación Natural */}
+                <div className="flex items-center space-x-3 justify-center lg:justify-start backdrop-blur-sm bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-emerald-400/30">
+                    <HeartIcon className="w-6 h-6 text-emerald-400" aria-hidden="true" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-white font-semibold text-sm sm:text-base">Atención Personal</h3>
-                    <p className="text-gray-300 text-xs sm:text-sm">Trato cercano y cuidadoso</p>
+                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                      Recuperación Natural
+                    </h3>
+                    <p className="text-gray-300 text-xs sm:text-sm">
+                      Proceso sin invasión
+                    </p>
                   </div>
                 </div>
-                
-                <div className="flex items-center space-x-3 justify-center lg:justify-start">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <SparklesIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+
+                {/* Feature 3: Resultados Comprobados */}
+                <div className="flex items-center space-x-3 justify-center lg:justify-start backdrop-blur-sm bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-green-400/30">
+                    <ShieldCheckIcon className="w-6 h-6 text-green-400" aria-hidden="true" />
                   </div>
                   <div className="text-left">
-                    <h3 className="text-white font-semibold text-sm sm:text-base">Compromiso</h3>
-                    <p className="text-gray-300 text-xs sm:text-sm">Dedicados a tu bienestar</p>
+                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                      Resultados Comprobados
+                    </h3>
+                    <p className="text-gray-300 text-xs sm:text-sm">
+                      Evidencia científica
+                    </p>
                   </div>
                 </div>
               </motion.div>
             </div>
 
-            {/* Image/Info Column */}
-            <div className="hidden lg:block">
+            {/* Info Card - Desktop Only */}
+            <div className="hidden lg:block lg:col-span-5">
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 text-white"
+                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-white border border-white/20 shadow-2xl hover:bg-white/15 transition-all duration-300"
               >
-                <h3 className="text-xl lg:text-2xl font-bold mb-4">Nuestro Compromiso</h3>
-                <ul className="space-y-2 lg:space-y-3">
-                  <li className="flex items-center space-x-3">
-                    <span className="text-green-400">•</span>
-                    <span className="text-sm lg:text-base">Centro nuevo con tecnología actualizada</span>
+                <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-green-300">
+                  ¿Por qué elegirnos?
+                </h2>
+                <ul className="space-y-4">
+                  <li className="flex items-start space-x-3">
+                    <span className="text-emerald-400 text-2xl leading-none" aria-hidden="true">✓</span>
+                    <span className="text-base lg:text-lg leading-relaxed">
+                      Centro especializado en oxigenoterapia hiperbárica
+                    </span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="text-green-400">•</span>
-                    <span className="text-sm lg:text-base">Equipos especializados en tratamientos hiperbáricos</span>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-emerald-400 text-2xl leading-none" aria-hidden="true">✓</span>
+                    <span className="text-base lg:text-lg leading-relaxed">
+                      Equipos certificados y tecnología moderna
+                    </span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="text-green-400">•</span>
-                    <span className="text-sm lg:text-base">Atención personalizada y dedicada</span>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-emerald-400 text-2xl leading-none" aria-hidden="true">✓</span>
+                    <span className="text-base lg:text-lg leading-relaxed">
+                      Atención personalizada por profesionales capacitados
+                    </span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="text-green-400">•</span>
-                    <span className="text-sm lg:text-base">Enfoque integral en tu bienestar</span>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-emerald-400 text-2xl leading-none" aria-hidden="true">✓</span>
+                    <span className="text-base lg:text-lg leading-relaxed">
+                      Enfoque integral en tu salud y bienestar
+                    </span>
                   </li>
                 </ul>
               </motion.div>

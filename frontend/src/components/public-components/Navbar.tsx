@@ -1,12 +1,21 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavigation = (path: string) => {
     setIsMenuOpen(false);
@@ -108,7 +117,7 @@ const Navbar = () => {
                   }`}
                   style={location.pathname === '/tratamientos' ? { color: '#8FD694' } : {}}
                 >
-                  Tratamientos
+                  Servicios
                 </a>
                 <a 
                   onClick={() => handleNavigation('/nosotros')} 

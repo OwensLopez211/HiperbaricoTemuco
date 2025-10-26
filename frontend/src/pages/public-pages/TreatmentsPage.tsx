@@ -1,21 +1,28 @@
 import { motion } from 'framer-motion';
 import Navbar from '../../components/public-components/Navbar';
 import PageTransition from '../../components/public-components/PageTransition';
+import { useBackgroundCarousel } from '../../hooks/useBackgroundCarousel';
 
 const TreatmentsPage = () => {
+  const { currentImage, opacity } = useBackgroundCarousel();
+
   return (
     <PageTransition>
       <Navbar />
-      <section 
+      <section
         className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'url("/hero.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
         aria-label="Sección de tratamientos"
       >
+        <div
+          className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+          style={{
+            backgroundImage: `url("${currentImage}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: opacity
+          }}
+        />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
           <motion.div
@@ -32,7 +39,7 @@ const TreatmentsPage = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
               >
-                Nuestros Tratamientos
+                Nuestros Servicios
               </motion.h1>
               
               <motion.p 
@@ -81,7 +88,7 @@ const TreatmentsPage = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 md:mb-3">Medicina Estética</h3>
+                    <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 md:mb-3">Estética</h3>
                     <p className="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">
                       Tratamientos no invasivos para rejuvenecimiento y belleza natural
                     </p>

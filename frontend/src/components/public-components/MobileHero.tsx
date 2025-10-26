@@ -1,23 +1,27 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useBackgroundCarousel } from '../../hooks/useBackgroundCarousel';
 
 const MobileHero = () => {
   const navigate = useNavigate();
+  const { currentImage, opacity } = useBackgroundCarousel();
 
   const handleConsultationClick = () => {
     navigate('/contacto');
   };
 
   return (
-    <section 
-      className="relative h-screen flex items-center justify-center overflow-hidden px-4"
-      style={{
-        backgroundImage: 'url("/hero.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+    <section className="relative h-screen flex items-center justify-center overflow-hidden px-4">
+      <div
+        className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+        style={{
+          backgroundImage: `url("${currentImage}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: opacity
+        }}
+      />
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative z-10 text-center max-w-sm">
         <motion.div

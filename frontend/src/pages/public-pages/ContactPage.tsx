@@ -3,24 +3,30 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import Navbar from '../../components/public-components/Navbar';
 import PageTransition from '../../components/public-components/PageTransition';
+import { useBackgroundCarousel } from '../../hooks/useBackgroundCarousel';
 
 const ContactPage = () => {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const { currentImage, opacity } = useBackgroundCarousel();
 
   return (
     <>
       <PageTransition>
         <Navbar />
-        <section 
+        <section
           className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
-          style={{
-            backgroundImage: 'url("/hero.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
           aria-label="Sección de contacto"
         >
+          <div
+            className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+            style={{
+              backgroundImage: `url("${currentImage}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              opacity: opacity
+            }}
+          />
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
             <motion.div
@@ -67,9 +73,9 @@ const ContactPage = () => {
                       </div>
                       <h3 className="text-white text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 md:mb-3">Información de Contacto</h3>
                       <p className="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">
-                        Av. Alemania 0281, Temuco<br />
-                        +56 45 2 987 654<br />
-                        contacto@hiperbaricotemuco.cl
+                      Av. Pablo Neruda 01865 local 3 Temuco<br />
+                        +56 9 7743 9465<br />
+                        hiperbaricotemuco@gmail.com
                       </p>
                     </div>
                   </div>
@@ -166,7 +172,7 @@ const ContactPage = () => {
             
             <div className="w-full h-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.8!2d-72.5938!3d-38.7318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9614d7e7a4d2c4d7%3A0x4b8e1b6c3d2a9f5e!2sAv.%20Alemania%200281%2C%20Temuco%2C%20La%20Araucan%C3%ADa%2C%20Chile!5e0!3m2!1ses!2scl!4v1640995200000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.10909546334!2d-72.63149858792576!3d-38.73825868732168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9614d411b0ec34a3%3A0xeb6d969f888f3d1e!2sAv.%20Pablo%20Neruda%201865%2C%20local%20%203%2C%20Temuco%2C%20Araucan%C3%ADa!5e0!3m2!1ses-419!2scl!4v1761496299616!5m2!1ses-419!2scl"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

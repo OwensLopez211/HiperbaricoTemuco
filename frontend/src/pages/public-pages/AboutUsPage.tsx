@@ -6,16 +6,19 @@ const AboutUsPage = () => {
   return (
     <PageTransition>
       <Navbar />
-      <section 
+      <section
         className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'url("/hero.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
         aria-label="Sección nosotros"
       >
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url("/nosotros.jpg")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
           <motion.div
@@ -118,15 +121,7 @@ const AboutUsPage = () => {
               transition={{ duration: 0.8, delay: 1.2 }}
               className="pt-3 sm:pt-4 md:pt-6"
             >
-              <a
-                href="/contacto"
-                className="inline-flex items-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 bg-white text-gray-900 text-xs sm:text-sm md:text-base font-semibold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl focus:outline-none focus:ring-4 focus:ring-white/50"
-              >
-                <span>Conoce Nuestro Equipo</span>
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
+              
             </motion.div>
           </motion.div>
         </div>
