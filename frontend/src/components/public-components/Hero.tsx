@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({
 
   return (
     <section
-      className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden pt-20 md:pt-0"
       aria-label="Hero section - Oxigenoterapia hiperbárica"
     >
       {/* Background Video (when enabled) */}
@@ -108,7 +108,7 @@ const Hero: React.FC<HeroProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 lg:mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4 lg:mb-6">
                   Respira salud.{' '}
                   <span className="text-green-400">
                     Renueva tu cuerpo
@@ -117,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({
                 </h1>
 
                 {/* Hero Subheadline - Client's Secondary Slogan */}
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed max-w-3xl mx-auto lg:mx-0">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-100 leading-relaxed max-w-3xl mx-auto lg:mx-0">
                   Mejora tu energía, acelera tu recuperación y potencia tu bienestar de forma natural.
                 </p>
               </motion.div>
@@ -127,14 +127,14 @@ const Hero: React.FC<HeroProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                className="flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
               >
                 {/* Primary CTA - Agenda tu sesión */}
                 <motion.button
                   onClick={handleBookingClick}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg transition-all duration-300 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/50 focus:ring-offset-2 focus:ring-offset-transparent"
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg transition-all duration-300 text-xs sm:text-sm md:text-base font-semibold shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-400/50 focus:ring-offset-2 focus:ring-offset-transparent whitespace-nowrap"
                   aria-label="Agenda tu sesión de oxigenoterapia"
                 >
                   Agenda tu sesión
@@ -145,7 +145,7 @@ const Hero: React.FC<HeroProps> = ({
                   onClick={handleBenefitsClick}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-base sm:text-lg font-semibold focus:outline-none focus:ring-4 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent"
+                  className="border-2 border-white text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300 text-xs sm:text-sm md:text-base font-semibold focus:outline-none focus:ring-4 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent whitespace-nowrap"
                   aria-label="Conoce los beneficios de la oxigenoterapia"
                 >
                   Conoce los beneficios
@@ -157,48 +157,48 @@ const Hero: React.FC<HeroProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mt-8 lg:mt-12"
+                className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 lg:gap-6 mt-6 sm:mt-8 lg:mt-12"
               >
                 {/* Feature 1: Oxigenoterapia Avanzada */}
-                <div className="flex items-center space-x-3 justify-center lg:justify-start backdrop-blur-sm bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-all duration-300">
-                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-green-400/30">
-                    <BeakerIcon className="w-6 h-6 text-green-400" aria-hidden="true" />
+                <div className="flex flex-col items-center text-center backdrop-blur-sm bg-white/5 rounded-lg p-2 sm:p-3 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-green-400/30 mb-2">
+                    <BeakerIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" aria-hidden="true" />
                   </div>
-                  <div className="text-left">
-                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                  <div>
+                    <h3 className="text-white font-semibold text-[10px] sm:text-xs md:text-sm leading-tight mb-1">
                       Oxigenoterapia Avanzada
                     </h3>
-                    <p className="text-gray-300 text-xs sm:text-sm">
+                    <p className="text-gray-300 text-[9px] sm:text-xs leading-tight">
                       Tecnología de punta
                     </p>
                   </div>
                 </div>
 
                 {/* Feature 2: Recuperación Natural */}
-                <div className="flex items-center space-x-3 justify-center lg:justify-start backdrop-blur-sm bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-all duration-300">
-                  <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-emerald-400/30">
-                    <HeartIcon className="w-6 h-6 text-emerald-400" aria-hidden="true" />
+                <div className="flex flex-col items-center text-center backdrop-blur-sm bg-white/5 rounded-lg p-2 sm:p-3 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-emerald-400/30 mb-2">
+                    <HeartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" aria-hidden="true" />
                   </div>
-                  <div className="text-left">
-                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                  <div>
+                    <h3 className="text-white font-semibold text-[10px] sm:text-xs md:text-sm leading-tight mb-1">
                       Recuperación Natural
                     </h3>
-                    <p className="text-gray-300 text-xs sm:text-sm">
+                    <p className="text-gray-300 text-[9px] sm:text-xs leading-tight">
                       Proceso sin invasión
                     </p>
                   </div>
                 </div>
 
                 {/* Feature 3: Resultados Comprobados */}
-                <div className="flex items-center space-x-3 justify-center lg:justify-start backdrop-blur-sm bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-all duration-300">
-                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-green-400/30">
-                    <ShieldCheckIcon className="w-6 h-6 text-green-400" aria-hidden="true" />
+                <div className="flex flex-col items-center text-center backdrop-blur-sm bg-white/5 rounded-lg p-2 sm:p-3 hover:bg-white/10 transition-all duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-green-400/30 mb-2">
+                    <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" aria-hidden="true" />
                   </div>
-                  <div className="text-left">
-                    <h3 className="text-white font-semibold text-sm sm:text-base">
+                  <div>
+                    <h3 className="text-white font-semibold text-[10px] sm:text-xs md:text-sm leading-tight mb-1">
                       Resultados Comprobados
                     </h3>
-                    <p className="text-gray-300 text-xs sm:text-sm">
+                    <p className="text-gray-300 text-[9px] sm:text-xs leading-tight">
                       Evidencia científica
                     </p>
                   </div>
