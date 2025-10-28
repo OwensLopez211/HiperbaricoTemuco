@@ -38,13 +38,13 @@ const AboutUsPage = () => {
                 Sobre Nosotros
               </motion.h1>
               
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-2"
               >
-                Pioneros en medicina hiperbárica y estética en La Araucanía
+                Pioneros en terapia hiperbárica y estética en La Araucanía
               </motion.p>
             </div>
 
@@ -67,7 +67,7 @@ const AboutUsPage = () => {
                       Nuestra Misión
                     </h3>
                     <p className="text-gray-300 text-[8px] sm:text-xs leading-snug px-1">
-                      Brindar atención médica hiperbárica de excelencia, mejorando la calidad de vida con tecnología avanzada y cuidado personalizado.
+                      Brindar tratamientos hiperbáricos de excelencia, mejorando la calidad de vida con tecnología avanzada y cuidado personalizado.
                     </p>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ const AboutUsPage = () => {
                       Nuestra Visión
                     </h3>
                     <p className="text-gray-300 text-[8px] sm:text-xs leading-snug px-1">
-                      Consolidarnos como el centro líder en medicina hiperbárica de La Araucanía, expandiendo el acceso a tratamientos innovadores y seguros.
+                      Consolidarnos como el centro líder en terapia hiperbárica de La Araucanía, expandiendo el acceso a tratamientos innovadores y seguros.
                     </p>
                   </div>
                 </div>
@@ -114,7 +114,7 @@ const AboutUsPage = () => {
                       Nuestros Valores
                     </h3>
                     <p className="text-gray-300 text-[8px] sm:text-xs leading-snug px-1">
-                      Compromiso con la excelencia médica, innovación constante, trato humano y personalizado, y dedicación total al bienestar de nuestros pacientes.
+                      Compromiso con la excelencia profesional, innovación constante, trato humano y personalizado, y dedicación total al bienestar de nuestros pacientes.
                     </p>
                   </div>
                 </div>

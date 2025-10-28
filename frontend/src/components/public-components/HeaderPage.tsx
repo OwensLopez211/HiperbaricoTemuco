@@ -6,9 +6,9 @@ const HeaderPage = () => {
       <div className="container mx-auto flex items-center justify-center py-4 px-4 sm:px-6">
         <Link to="/" className="flex items-center">
           <img
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Centro Hiperbárico y Estético Temuco"
-            className="h-40 sm:h-52 md:h-60 lg:h-72 xl:h-80 w-auto"
+            className="h-[184px] sm:h-[239px] md:h-[276px] lg:h-[331px] xl:h-[368px] w-auto rounded-full"
           />
         </Link>
       </div>

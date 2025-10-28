@@ -42,13 +42,13 @@ const TreatmentsPage = () => {
                 Nuestros Servicios
               </motion.h1>
               
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed px-2"
               >
-                Ofrecemos la más avanzada tecnología médica para tu bienestar y recuperación
+                Ofrecemos la más avanzada tecnología hiperbárica para tu bienestar y recuperación
               </motion.p>
             </div>
 

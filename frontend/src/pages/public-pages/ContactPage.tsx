@@ -74,11 +74,16 @@ const ContactPage = () => {
                       <h3 className="text-white font-semibold text-[9px] sm:text-xs md:text-sm leading-tight mb-1.5 min-h-[28px] sm:h-9 md:h-10 flex items-center justify-center">
                         Información de Contacto
                       </h3>
-                      <p className="text-gray-300 text-[8px] sm:text-xs leading-snug px-1">
-                        Av. Pablo Neruda 01865 local 3 Temuco<br />
-                        +56 9 7743 9465<br />
-                        hiperbaricotemuco@gmail.com
-                      </p>
+                      <div className="text-gray-300 text-[8px] sm:text-xs leading-snug px-1">
+                        <p>Av. Pablo Neruda 01865 local 3 Temuco</p>
+                        <p>+56 9 7743 9465</p>
+                        <a
+                          href="mailto:hiperbaricotemuco@gmail.com"
+                          className="break-all hover:text-blue-300 transition-colors underline"
+                        >
+                          hiperbaricotemuco@gmail.com
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -100,9 +105,7 @@ const ContactPage = () => {
                         Horarios de Atención
                       </h3>
                       <p className="text-gray-300 text-[8px] sm:text-xs leading-snug px-1">
-                        Lunes a Viernes: 8:00 - 19:00<br />
-                        Sábados: 9:00 - 14:00<br />
-                        Domingos: Cerrado
+                        Lunes a Viernes: 9:00 - 13:00 / 14:00 - 19:00<br />
                       </p>
                     </div>
                   </div>
@@ -144,7 +147,7 @@ const ContactPage = () => {
                 className="pt-3 sm:pt-4 md:pt-6"
               >
                 <a
-                  href="tel:+56452987654"
+                  href="tel:+56977439465"
                   className="inline-flex items-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 bg-white text-gray-900 text-xs sm:text-sm md:text-base font-semibold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl focus:outline-none focus:ring-4 focus:ring-white/50"
                 >
                   <span>Llamar Ahora</span>

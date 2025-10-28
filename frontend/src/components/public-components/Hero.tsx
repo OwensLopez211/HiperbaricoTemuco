@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({
 
   return (
     <section
-      className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden pt-20 md:pt-0"
+      className="relative min-h-screen max-h-screen w-full max-w-full flex items-center justify-center overflow-hidden pt-20 md:pt-16"
       aria-label="Hero section - Oxigenoterapia hiperbárica"
     >
       {/* Background Video (when enabled) */}
